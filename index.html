@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyle Ohagan | Enterprise AEM Architect & Tech Lead</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#FFFFFF',
+                            card: '#F8FAFC',
+                            border: '#E2E8F0',
+                            accent: '#0284C7',
+                            purple: '#6366F1',
+                            emerald: '#10B981',
+                            gold: '#D97706'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Clean Light Glassmorphism & Visual FX */
+        body {
+            background-color: #FFFFFF;
+            color: #0F172A;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(248, 250, 252, 0.9) 0%, rgba(241, 245, 249, 0.9) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid #E2E8F0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(2, 132, 199, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(2, 132, 199, 0.12);
+        }
+
+        .glow-effect {
+            position: relative;
+        }
+
+        .glow-effect::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(45deg, #0284C7, #6366F1, transparent, #10B981);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .glow-effect:hover::before {
+            opacity: 0.4;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #0F172A 30%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-accent {
+            background: linear-gradient(135deg, #0284C7 0%, #6366F1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0284C7;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-sky-500 selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 to-indigo-600 flex items-center justify-center font-bold text-lg text-white shadow-lg shadow-sky-600/20 group-hover:scale-105 transition-transform">
+                        KO
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-lg tracking-tight text-slate-900 group-hover:text-sky-600 transition-colors">Kyle Ohagan</span>
+                        <span class="text-xs text-slate-500 font-medium">Enterprise AEM Architect</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#key-numbers" class="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors">Experience</a>
+                    <a href="#clients" class="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors">Clients</a>
+                    <a href="#case-study" class="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors">Case Study</a>
+                    <a href="#featured-projects" class="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors">Featured Projects</a>
+                    <a href="#services" class="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors">Services</a>
+                    <a href="#certifications" class="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors">Certifications</a>
+                    <a href="#about-me" class="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors">About Me</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-slate-900 p-2 rounded-lg focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-nav border-t border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#key-numbers" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-sky-600">Experience</a>
+            <a href="#clients" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-sky-600">Clients</a>
+            <a href="#case-study" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-sky-600">Case Study</a>
+            <a href="#featured-projects" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-sky-600">Featured Projects</a>
+            <a href="#services" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-sky-600">Services</a>            
+            <a href="#certifications" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-sky-600">Certifications</a>
+            <a href="#about-me" class="text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors">About Me</a>
+        </div>
+    </header>
+
+    <main class="pt-24">
+
+        <section id="hero" class="relative min-h-[88vh] flex items-center justify-center overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-slate-50/60 to-white">
+            <!-- Background Glowing Orbs -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-sky-400/10 to-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-[350px] h-[350px] bg-emerald-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Hero Content Left -->
+                    <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+
+                        <!-- Main Headline with Brush Stroke Highlight -->
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-[1.18] text-slate-900">
+                            Certified 
+                            <span class="relative inline-block whitespace-nowrap">
+                                <span class="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-sky-500 to-indigo-600">AEM Architect</span>
+                                <!-- SVG Brush Highlight Underline -->
+                                <svg class="absolute -bottom-2 left-0 w-full h-3 text-sky-400/30 z-0 pointer-events-none" viewBox="0 0 200 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 9C50 3.5 150 2 197 8" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+                                </svg>
+                            </span> 
+                            with 14 Years Enterprise Experience across 
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-600">5 Countries</span>
+                        </h1>
+
+                        <!-- Subtext -->
+                        <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+                            Since 2012, I've led end-to-end <span class="text-slate-900 font-semibold">AEM as a Cloud Service migrations</span>, tech leadership and hands-on engineering, CI/CD and DevOps automation, security uplift, and enterprise architecture for top-tier organizations across Australia, the Netherlands, Singapore, Poland, and the Philippines.
+                        </p>
+
+                        <!-- Call to Action Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="mailto:kyle.ohagan@yahoo.com?subject=AEM%20Architecture%20Inquiry" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white font-bold text-base shadow-xl shadow-sky-600/25 hover:shadow-sky-600/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3">
+                                <span>Let's Talk</span>
+                                <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </a>
+
+                            <a href="#case-study" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card hover:bg-slate-100 text-slate-700 font-semibold text-base border border-slate-200 hover:border-slate-300 transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-folder-open text-sky-600"></i>
+                                <span>Explore Cloud Migration Case Study</span>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Hero Visual Right (Soft Blended Frame) -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            
+                            <!-- Ambient Glow Behind Image Frame -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-sky-500/10 via-indigo-500/10 to-transparent rounded-3xl blur-2xl transform scale-95 pointer-events-none"></div>
+
+                            <!-- Soft Rounded Image Container -->
+                            <div class="relative rounded-3xl overflow-hidden glass-card border border-slate-200 p-2 shadow-2xl">
+                                <div class="relative rounded-2xl overflow-hidden">
+                                    <img src="https://i.postimg.cc/t4RXPkh0/hero-image-aem-architect.jpg" 
+                                         alt="Kyle Ohagan - Enterprise AEM Architect" 
+                                         class="w-full h-auto object-cover rounded-2xl">
+                                    <!-- Bottom Fade Gradient Overlay for Seamless Edge Transition -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent pointer-events-none"></div>
+                                </div>
+                            </div>
+
+                            <!-- Small Caption Underneath Photo -->
+                            <div class="text-center mt-3">
+                                <span class="text-xs sm:text-sm font-medium tracking-wide text-slate-500 uppercase">Kyle Ohagan — Founder</span>
+                            </div>
+
+                        </div>    
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="key-numbers" class="py-20 lg:py-28 relative bg-slate-50/60 border-y border-slate-200 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                            Key Numbers
+                        </h2>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                    
+                    <!-- Stat Card 1 -->
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group shadow-sm">
+                        <div class="text-4xl sm:text-5xl font-extrabold bg-clip-text bg-gradient-to-r from-sky-600 to-indigo-600 mb-2">
+                            14 Years In Tech
+                        </div>
+                        <div class="text-lg font-bold text-slate-900 mb-1">11+ Years Dedicated AEM</div>
+                        <p class="text-sm text-slate-600">
+                            Deep engineering background spanning AEM Architecture and Development, DevOps, and Production Support since 2012.
+                        </p>
+                    </div>
+
+                    <!-- Stat Card 2 -->
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group shadow-sm">
+                        <div class="text-4xl sm:text-5xl font-extrabold bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 mb-2">
+                            12+ AEM Projects
+                        </div>
+                        <div class="text-lg font-bold text-slate-900 mb-1">Enterprise Scale Implementations</div>
+                        <p class="text-sm text-slate-600">
+                            Combined experience across hands-on engineering, tech leadership and architecture across major financial, telecom, and government brands.
+                        </p>
+                    </div>
+                    
+
+                    <!-- Stat Card 3 -->
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group shadow-sm">
+                        <div class="text-4xl sm:text-5xl font-extrabold bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-2">
+                            8+ AEM Versions
+                        </div>
+                        <div class="text-lg font-bold text-slate-900 mb-1">AEM Evolution Track Record</div>
+                        <p class="text-sm text-slate-600">
+                            Proven legacy-to-modern execution from CQ 5.6, AEM 6.x on-prem, AMS, through the latest AEM as a Cloud Service.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <section id="clients" class="py-20 lg:py-28 relative bg-slate-50/60 border-y border-slate-200 overflow-hidden">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="mb-10">
+              <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">
+                Clients & Industries
+              </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+              <!-- Category 1: Financial Services & Infrastructure -->
+              <div class="glass-card rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-md p-6 shadow-sm">
+                <h3 class="font-bold text-slate-900 text-lg mb-4 pb-2 border-b border-slate-200">
+                  Financial Services & Infrastructure
+                </h3>
+                <div class="grid grid-cols-2 gap-4">
+                  
+                  <div class="group relative flex items-center justify-center h-28 w-full rounded-xl bg-white overflow-hidden ring-1 ring-slate-200 hover:scale-[1.02] transition-transform shadow-xs">
+                    <img src="https://1000logos.net/wp-content/uploads/2018/10/ANZ-Logo.jpg" alt="ANZ" class="w-full h-full object-cover">
+                  </div>
+
+                  <div class="group relative flex items-center justify-center h-28 w-full rounded-xl bg-white overflow-hidden ring-1 ring-slate-200 hover:scale-[1.02] transition-transform shadow-xs">
+                    <img src="https://logos-world.net/wp-content/uploads/2025/11/Macquarie-Group-Logo.jpg" alt="Macquarie" class="w-full h-full object-cover">
+                  </div>
+
+                  <div class="group relative flex items-center justify-center h-28 w-full rounded-xl bg-white overflow-hidden ring-1 ring-slate-200 hover:scale-[1.02] transition-transform shadow-xs">
+                    <img src="https://logos-world.net/wp-content/uploads/2023/05/Manulife-Logo.jpg" alt="Manulife" class="w-full h-full object-cover">
+                  </div>
+
+                  <div class="group relative flex items-center justify-center h-28 w-full rounded-xl bg-white overflow-hidden ring-1 ring-slate-200 hover:scale-[1.02] transition-transform shadow-xs">
+                    <img src="https://www.principals.com.au/wp-content/uploads/2018/04/Transurban-Case_Study-1.jpg" alt="Transurban" class="w-full h-full object-cover">
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Category 2: Consumer Goods & Services -->
+              <div class="glass-card rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-md p-6 shadow-sm">
+                <h3 class="font-bold text-slate-900 text-lg mb-4 pb-2 border-b border-slate-200">
+                  Consumer Goods & Services
+                </h3>
+                <div class="grid grid-cols-2 gap-4">
+                  
+                  <div class="group relative flex items-center justify-center h-28 w-full rounded-xl bg-white overflow-hidden ring-1 ring-slate-200 hover:scale-[1.02] transition-transform shadow-xs">
+                    <img src="https://logos-world.net/wp-content/uploads/2020/06/Samsung-Logo.jpg" alt="Samsung" class="w-full h-full object-cover">
+                  </div>
+
+                  <div class="group relative flex items-center justify-center h-28 w-full rounded-xl bg-white overflow-hidden ring-1 ring-slate-200 hover:scale-[1.02] transition-transform shadow-xs">
+                    <img src="https://logos-world.net/wp-content/uploads/2023/02/Procter-and-Gamble-Logo.jpg" alt="Procter and Gamble" class="w-full h-full object-cover">
+                  </div>
+
+                  <div class="group relative flex items-center justify-center h-28 w-full rounded-xl bg-white overflow-hidden ring-1 ring-slate-200 hover:scale-[1.02] transition-transform shadow-xs">
+                    <img src="https://logos-world.net/wp-content/uploads/2023/03/Shimano-Logo.jpg" alt="Shimano" class="w-full h-full object-cover">
+                  </div>
+
+                  <div class="group relative flex items-center justify-center h-28 w-full rounded-xl bg-white overflow-hidden ring-1 ring-slate-200 hover:scale-[1.02] transition-transform col-span-2 sm:col-span-1 shadow-xs">
+                    <img src="https://1000logos.net/wp-content/uploads/2020/10/AGL-Logo.jpg" alt="AGL" class="w-full h-full object-cover">
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Category 3: Tourism -->
+              <div class="glass-card rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-md p-6 shadow-sm">
+                <h3 class="font-bold text-slate-900 text-lg mb-4 pb-2 border-b border-slate-200">
+                  Tourism
+                </h3>
+                <div class="grid grid-cols-2 gap-4">
+                  
+                  <div class="group relative flex items-center justify-center h-28 w-full rounded-xl bg-white p-2 overflow-hidden ring-1 ring-slate-200 hover:scale-[1.02] transition-transform shadow-xs">
+                    <img src="https://upload.wikimedia.org/wikipedia/th/1/1f/Gardens_by_the_Bay_logo.svg" alt="Gardens by the Bay" class="w-full h-full object-contain">
+                  </div>
+
+                  <div class="group relative flex items-center justify-center h-28 w-full rounded-xl bg-white overflow-hidden ring-1 ring-slate-200 hover:scale-[1.02] transition-transform shadow-xs">
+                    <img src="https://yt3.googleusercontent.com/ytc/AIdro_mfxYujp44yC4DG6p3ho9uUyYIu7y2gb-mSUTiID-fk4w=s900-c-k-c0x00ffffff-no-rj" alt="Tourism and Events Queensland" class="w-full h-full object-cover">
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Category 4: Telecommunications -->
+              <div class="glass-card rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-md p-6 shadow-sm">
+                <h3 class="font-bold text-slate-900 text-lg mb-4 pb-2 border-b border-slate-200">
+                  Telecommunications
+                </h3>
+                <div class="grid grid-cols-2 gap-4">
+                  
+                  <div class="group relative flex items-center justify-center h-28 w-full rounded-xl bg-white overflow-hidden ring-1 ring-slate-200 hover:scale-[1.02] transition-transform shadow-xs">
+                    <img src="https://1000logos.net/wp-content/uploads/2021/12/Globe-Telecom-logo.jpg" alt="Globe" class="w-full h-full object-cover">
+                  </div>
+
+                  <div class="group relative flex items-center justify-center h-28 w-full rounded-xl bg-white overflow-hidden ring-1 ring-slate-200 hover:scale-[1.02] transition-transform shadow-xs">
+                    <img src="https://logos-world.net/wp-content/uploads/2021/04/Telstra-Logo.jpg" alt="Telstra" class="w-full h-full object-cover">
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+            
+       <!-- Case Study Section -->
+        <section id="case-study" class="py-20 lg:py-28 relative bg-slate-50/60 border-y border-slate-200 overflow-hidden">
+            <!-- Background glow for depth -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-sky-500/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+                <!-- Section Header -->
+                <div class="mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Case Study
+                    </h2>
+                </div>
+
+                <!-- 4-Step Cards Grid with Super Large Responsive Connectors -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 relative z-10">
+
+                    <!-- Step 1: Problem -->
+                    <div class="relative group">
+                        <div class="glass-card rounded-2xl overflow-hidden border border-slate-200 flex flex-col justify-between h-full relative z-10 shadow-sm bg-white/60">
+                            <div>
+                                <!-- Card Top Hero Image -->
+                                <div class="h-32 w-full overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" 
+                                         alt="Legacy On-Premise Servers" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
+                                </div>
+
+                                <!-- Card Body -->
+                                <div class="p-5 pt-4">
+                                    <h3 class="text-lg font-bold text-slate-900 mb-3 group-hover:text-sky-600 transition-colors">
+                                        Problem & Context
+                                    </h3>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-slate-600">
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>On-Premise AEM:</strong> Operated legacy setups for portals & public sites.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>Vendor Dependencies:</strong> 3rd-party vendor managed infrastructure & upgrades.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>High Overhead:</strong> Excessive maintenance costs and slow release cycles.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Desktop Super Large Horizontal Arrow Connector -->
+                        <div class="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-sky-500/50 text-sky-600 items-center justify-center z-20 text-base shadow-xl shadow-slate-200">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+
+                        <!-- Mobile Super Large Vertical Arrow Connector -->
+                        <div class="flex lg:hidden w-full justify-center my-4 text-sky-600">
+                            <div class="w-10 h-10 rounded-full bg-white border-2 border-sky-500/50 flex items-center justify-center shadow-md animate-bounce">
+                                <i class="fa-solid fa-arrow-down text-base"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Audit & Planning -->
+                    <div class="relative group">
+                        <div class="glass-card rounded-2xl overflow-hidden border border-slate-200 flex flex-col justify-between h-full relative z-10 shadow-sm bg-white/60">
+                            <div>
+                                <!-- Card Top Hero Image -->
+                                <div class="h-32 w-full overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" 
+                                         alt="Architecture Audit and Planning" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
+                                </div>
+
+                                <!-- Card Body -->
+                                <div class="p-5 pt-4">
+                                    <h3 class="text-lg font-bold text-slate-900 mb-3 group-hover:text-sky-600 transition-colors">
+                                        Architecture Analysis
+                                    </h3>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-slate-600">
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>Deep Audits:</strong> Led reviews of legacy portal states, integration and technical debts.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>BPA Reports:</strong> Analyzed Best Practices Analyzer reports and plan remediations</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>Roadmapping:</strong> Drafted future architecture, timelines, and Jira epics/stories.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Desktop Super Large Horizontal Arrow Connector -->
+                        <div class="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-sky-500/50 text-sky-600 items-center justify-center z-20 text-base shadow-xl shadow-slate-200">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+
+                        <!-- Mobile Super Large Vertical Arrow Connector -->
+                        <div class="flex lg:hidden w-full justify-center my-4 text-sky-600">
+                            <div class="w-10 h-10 rounded-full bg-white border-2 border-sky-500/50 flex items-center justify-center shadow-md animate-bounce">
+                                <i class="fa-solid fa-arrow-down text-base"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Execution -->
+                    <div class="relative group">
+                        <div class="glass-card rounded-2xl overflow-hidden border border-slate-200 flex flex-col justify-between h-full relative z-10 shadow-sm bg-white/60">
+                            <div>
+                                <!-- Card Top Hero Image -->
+                                <div class="h-32 w-full overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
+                                         alt="Cross Team Delivery" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
+                                </div>
+
+                                <!-- Card Body -->
+                                <div class="p-5 pt-4">
+                                    <h3 class="text-lg font-bold text-slate-900 mb-3 group-hover:text-sky-600 transition-colors">
+                                        Cross-Team Delivery
+                                    </h3>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-slate-600">
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>Cloud Setup:</strong> Partnered with Identity, Security, Integration & Network teams.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>Code Refactoring:</strong> Refactored repositories for Cloud compatibility.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>Stakeholder Sync:</strong> Guided dev teams and delivered weekly reporting.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Desktop Super Large Horizontal Arrow Connector -->
+                        <div class="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-sky-500/50 text-sky-600 items-center justify-center z-20 text-base shadow-xl shadow-slate-200">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+
+                        <!-- Mobile Super Large Vertical Arrow Connector -->
+                        <div class="flex lg:hidden w-full justify-center my-4 text-sky-600">
+                            <div class="w-10 h-10 rounded-full bg-white border-2 border-sky-500/50 flex items-center justify-center shadow-md animate-bounce">
+                                <i class="fa-solid fa-arrow-down text-base"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Outcome (High Visual Impact) -->
+                    <div class="relative group">
+                        <div class="rounded-2xl overflow-hidden border-2 border-sky-500/60 bg-gradient-to-br from-sky-50 via-white to-slate-50 flex flex-col justify-between h-full relative z-10 shadow-xl shadow-sky-600/10">
+                            
+                            <!-- Ambient Glow Effect -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-sky-500/5 via-transparent to-transparent pointer-events-none"></div>
+
+                            <div>
+                                <!-- Card Top Hero Image -->
+                                <div class="h-32 w-full overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" 
+                                         alt="Cloud Architecture Outcome" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
+
+                                    <!-- Prominent Outcome Badge with Trophy Icon -->
+                                    <div class="absolute top-3 left-3 px-3 py-1.5 rounded-lg bg-sky-600 text-white font-extrabold text-xs flex items-center gap-1.5 shadow-lg border border-sky-400/40 backdrop-blur-md">
+                                        <i class="fa-solid fa-trophy text-[11px] animate-pulse"></i>
+                                        <span>RESULT</span>
+                                    </div>
+                                </div>
+
+                                <!-- Card Body with bullet points -->
+                                <div class="p-5 pt-4 relative z-10">
+                                    <h3 class="text-xl font-extrabold text-slate-900 mb-3 group-hover:text-sky-600 transition-colors flex items-center gap-2">
+                                        Outcome
+                                    </h3>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-slate-700 font-medium">
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-600 mt-2 shrink-0"></i>
+                                            <span><strong>Strict Deadline:</strong> Completed migration in a <span class="text-sky-700 font-bold bg-sky-100 px-1 rounded">4-month window</span>.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-600 mt-2 shrink-0"></i>
+                                            <span><strong>Scale:</strong> Successfully deployed across <span class="text-sky-700 font-bold bg-sky-100 px-1 rounded">5 AEM Cloud environments</span>.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-600 mt-2 shrink-0"></i>
+                                            <span><strong>Value:</strong> Cut operational costs and enabled monthly releases.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Bottom highlighted footer callout -->
+                            <div class="px-5 pb-5 pt-0 relative z-10">
+                                <div class="pt-3 border-t border-sky-500/30 flex items-center justify-between text-xs text-sky-700 font-bold tracking-wider">
+                                    <span class="flex items-center gap-1.5">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                                        SUCCESSFULLY DELIVERED
+                                    </span>
+                                    <i class="fa-solid fa-circle-check text-sky-600 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        
+        <!-- Featured Projects Section -->
+        <section id="featured-projects" class="py-20 lg:py-28 relative bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                            Featured Projects
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Card 1: ANZ Bank New Zealand -->
+                    <div class="glass-card rounded-2xl overflow-hidden border-slate-200 flex flex-col justify-between group shadow-sm">
+                        <div>
+                            <!-- Embedded Link Preview Image -->
+                            <a href="https://www.anz.co.nz/personal/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden aspect-video bg-slate-100 border-b border-slate-200 relative">
+                                <img src="https://api.microlink.io/?url=https%3A%2F%2Fwww.anz.co.nz%2Fpersonal%2F&embed=image.url" 
+                                     alt="ANZ Bank New Zealand Preview" 
+                                     class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                     loading="lazy">
+                            </a>
+                            
+                            <!-- Card Content -->
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-sky-600 transition-colors">
+                                    ANZ New Zealand Personal Banking
+                                </h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Enterprise AEM web portal delivering personal banking products, credit services, and digital financial solutions to over one million Kiwis across New Zealand.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0">
+                            <a href="https://www.anz.co.nz/personal/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-sky-600 hover:text-sky-700 transition-colors">
+                                <span>Visit ANZ New Zealand Personal Banking</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Tourism Queensland -->
+                    <div class="glass-card rounded-2xl overflow-hidden border-slate-200 flex flex-col justify-between group shadow-sm">
+                        <div>
+                            <!-- Embedded Link Preview Image -->
+                            <a href="https://www.queensland.com/sg/en/home" target="_blank" rel="noopener noreferrer" class="block overflow-hidden aspect-video bg-slate-100 border-b border-slate-200 relative">
+                                <img src="https://api.microlink.io/?url=https%3A%2F%2Fwww.queensland.com%2Fsg%2Fen%2Fhome&embed=image.url" 
+                                     alt="Queensland Tourism Preview" 
+                                     class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                     loading="lazy">
+                            </a>
+
+                            <!-- Card Content -->
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                                    Queensland Tourism Platform
+                                </h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Official global tourism travel portal promoting Queensland’s iconic destinations, regional events, and immersive experiences.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0">
+                            <a href="https://www.queensland.com/sg/en/home" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-emerald-600 hover:text-emerald-700 transition-colors">
+                                <span>Visit Queensland Tourism Platform</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Gardens by the Bay -->
+                    <div class="glass-card rounded-2xl overflow-hidden border-slate-200 flex flex-col justify-between group shadow-sm">
+                        <div>
+                            <!-- Embedded Link Preview Image -->
+                            <a href="https://www.gardensbythebay.com.sg/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden aspect-video bg-slate-100 border-b border-slate-200 relative">
+                                <img src="https://api.microlink.io/?url=https%3A%2F%2Fwww.gardensbythebay.com.sg%2F&embed=image.url" 
+                                     alt="Gardens by the Bay Preview" 
+                                     class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                     loading="lazy">
+                            </a>
+
+                            <!-- Card Content -->
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                                    Gardens by the Bay Singapore
+                                </h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Digital Experience Platform powering visitor ticketing, attraction booking, event management, and park showcases for Singapore's premier urban garden icon.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0">
+                            <a href="https://www.gardensbythebay.com.sg/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
+                                <span>Visit Gardens by the Bay Singapore</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Linkt Melbourne -->
+                    <div class="glass-card rounded-2xl overflow-hidden border-slate-200 flex flex-col justify-between group shadow-sm">
+                        <div>
+                            <!-- Embedded Link Preview Image -->
+                            <a href="https://www.linkt.com.au/login" target="_blank" rel="noopener noreferrer" class="block overflow-hidden aspect-video bg-slate-100 border-b border-slate-200 relative">
+                                <img src="https://www.linkt.com.au/content/dam/linkt/common/news/7eleven-banner-1195x485.png" 
+                                     alt="Linkt Melbourne Preview" 
+                                     class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                     loading="lazy">
+                            </a>
+
+                            <!-- Card Content -->
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                                    Linkt Melbourne Tollway Platform
+                                </h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Transurban's customer portal providing account management, pass purchases, and automated toll collection across Melbourne's CityLink toll road network.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0">
+                            <a href="https://www.linkt.com.au/login" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
+                                <span>Visit Linkt Melbourne Tollway Platform</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-20 lg:py-28 relative bg-slate-50/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                            Services Offered
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Service 1 -->
+                    <div class="glass-card rounded-2xl p-8 relative group border-slate-200 shadow-sm">
+                
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">AEM Architecture</h3>
+                    
+                        <ul class="space-y-2.5 text-sm text-slate-700">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Legacy System Audits & Technical Debt Assessment</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Target State Solution Architecture Diagrams</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Technology Roadmaps & Decision Registers</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Architectural Trade-off & Governance Analysis</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="glass-card rounded-2xl p-8 relative group border-slate-200 shadow-sm">
+                    
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">AEM Cloud Migration</h3>
+                    
+                        <ul class="space-y-2.5 text-sm text-slate-700">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Best Practices Analyzer (BPA) & Cloud Readiness Audits</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Repository Modernization & Refactoring Strategy</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>End to End Plan and Execution with Dependency Mapping</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Zero-Downtime Migration Timelines & Cutover</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="glass-card rounded-2xl p-8 relative group border-slate-200 shadow-sm">
+                        
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Technical Leadership</h3>
+                        
+                        <ul class="space-y-2.5 text-sm text-slate-700">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Cross-Functional Collaboration (Security, Network, Integration, Product)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>3rd-Party Vendor & Integration Oversight</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Release Management, Test Strategies & Quarterly Planning</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Mentoring & Offshore Engineering Enablement</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="glass-card rounded-2xl p-8 relative group border-slate-200 shadow-sm">
+                        
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">AEM Engineering & DevOps</h3>
+                        
+                        <ul class="space-y-2.5 text-sm text-slate-700">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Core Components, Editable Templates, Sling Models, OSGI</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Security Hardening & Dispatcher Caching Optimization</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>New Environments Setup, CI/CD Pipeline Automation and Cloud Manager Administration</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xs text-sky-600"></i>
+                                <span>Best Practices, Unit Testing and Extensive Documentations</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="py-20 lg:py-28 relative bg-white border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                            Certifications
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Cert 1 -->
+                    <div class="glass-card rounded-2xl p-8 border-slate-200 flex flex-col items-center text-center hover:border-slate-300 transition-all group shadow-sm">
+                        <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl bg-white border border-slate-200 flex items-center justify-center p-4 shrink-0 shadow-md shadow-slate-200 group-hover:scale-105 group-hover:border-sky-300 transition-all duration-300">
+                            <img src="https://i.postimg.cc/C1qJc1PG/adobe-certified-master.png" alt="Adobe Certified Master Badge" class="w-full h-full object-contain filter drop-shadow-md">
+                        </div>
+                        <div class="mt-6">
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-sky-600 transition-colors">Adobe Certified Master</h3>
+                            <p class="text-sm text-slate-600 mt-1.5">AEM Architect</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div class="glass-card rounded-2xl p-8 border-slate-200 flex flex-col items-center text-center hover:border-slate-300 transition-all group shadow-sm">
+                        <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl bg-white border border-slate-200 flex items-center justify-center p-4 shrink-0 shadow-md shadow-slate-200 group-hover:scale-105 group-hover:border-sky-300 transition-all duration-300">
+                            <img src="https://i.postimg.cc/QMP0g5b0/adobe-certified-expert.png" alt="Adobe Certified Expert Badge" class="w-full h-full object-contain filter drop-shadow-md">
+                        </div>
+                        <div class="mt-6">
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-sky-600 transition-colors">Adobe Certified Expert</h3>
+                            <p class="text-sm text-slate-600 mt-1.5">AEM Developer</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div class="glass-card rounded-2xl p-8 border-slate-200 flex flex-col items-center text-center hover:border-slate-300 transition-all group shadow-sm">
+                        <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl bg-white border border-slate-200 flex items-center justify-center p-4 shrink-0 shadow-md shadow-slate-200 group-hover:scale-105 group-hover:border-sky-300 transition-all duration-300">
+                            <img src="https://i.postimg.cc/3Rv9tRSF/aws-badge.png" alt="AWS Certified Developer Badge" class="w-full h-full object-contain filter drop-shadow-md">
+                        </div>
+                        <div class="mt-6">
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-sky-600 transition-colors">Developer Associate</h3>
+                            <p class="text-sm text-slate-600 mt-1.5">Amazon Web Services</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 4 -->
+                    <div class="glass-card rounded-2xl p-8 border-slate-200 flex flex-col items-center text-center hover:border-slate-300 transition-all group shadow-sm">
+                        <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl bg-white border border-slate-200 flex items-center justify-center p-4 shrink-0 shadow-md shadow-slate-200 group-hover:scale-105 group-hover:border-sky-300 transition-all duration-300">
+                            <img src="https://i.postimg.cc/1zTJ06H7/adobe-eds.png" alt="AEM Edge Delivery Services Badge" class="w-full h-full object-contain filter drop-shadow-md">
+                        </div>
+                        <div class="mt-6">
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-sky-600 transition-colors">AEM Edge Delivery Services</h3>
+                            <p class="text-sm text-slate-600 mt-1.5">Developer Professional Course</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 5 -->
+                    <div class="glass-card rounded-2xl p-8 border-slate-200 flex flex-col items-center text-center hover:border-slate-300 transition-all group shadow-sm">
+                        <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl bg-white border border-slate-200 flex items-center justify-center p-4 shrink-0 shadow-md shadow-slate-200 group-hover:scale-105 group-hover:border-sky-300 transition-all duration-300">
+                            <img src="https://i.postimg.cc/QtTSft4q/itil-badge.png" alt="ITIL Foundations v3 Badge" class="w-full h-full object-contain filter drop-shadow-md">
+                        </div>
+                        <div class="mt-6">
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-sky-600 transition-colors">ITIL Foundations v3</h3>
+                            <p class="text-sm text-slate-600 mt-1.5">IT Service Management</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 6 -->
+                    <div class="glass-card rounded-2xl p-8 border-slate-200 flex flex-col items-center text-center hover:border-slate-300 transition-all group shadow-sm">
+                        <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl bg-white border border-slate-200 flex items-center justify-center p-4 shrink-0 shadow-md shadow-slate-200 group-hover:scale-105 group-hover:border-sky-300 transition-all duration-300">
+                            <img src="https://i.postimg.cc/JhgP3Jqd/aem6-course.png" alt="AEM 6 Developer Course Badge" class="w-full h-full object-contain filter drop-shadow-md">
+                        </div>
+                        <div class="mt-6">
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-sky-600 transition-colors">AEM 6 Developer Course</h3>
+                            <p class="text-sm text-slate-600 mt-1.5">Adobe Official Training</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="about-me" class="py-20 lg:py-28 relative border-t border-slate-200 bg-slate-50/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                            About Me
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Personal Card 1 -->
+                    <div class="glass-card rounded-2xl overflow-hidden border-slate-200 flex flex-col justify-between group shadow-sm">
+                        <div>
+                            <!-- Card Top Hero Image -->
+                            <div class="h-44 w-full overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80" 
+                                     alt="One-Backpack Nomadism" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                            </div>
+
+                            <!-- Card Content -->
+                            <div class="p-6">
+                                <h3 class="text-2xl font-extrabold text-slate-900 mb-1 group-hover:text-sky-600 transition-colors">
+                                    8 KG
+                                </h3>
+                                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+                                    One-Backpack Nomadism
+                                </p>
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                    I travel light with just an 8kg carry-on while backpacking South America for a year.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Card 2 -->
+                    <div class="glass-card rounded-2xl overflow-hidden border-slate-200 flex flex-col justify-between group shadow-sm">
+                        <div>
+                            <!-- Card Top Hero Image -->
+                            <div class="h-44 w-full overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Zelda Breath of the Wild" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                            </div>
+
+                            <!-- Card Content -->
+                            <div class="p-6">
+                                <h3 class="text-2xl font-extrabold text-slate-900 mb-1 group-hover:text-sky-600 transition-colors">
+                                    250+ Hours
+                                </h3>
+                                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+                                    Zelda: Breath of the Wild
+                                </p>
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                    I love exploring open worlds and tackling complex and creative puzzles. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Card 3 -->
+                    <div class="glass-card rounded-2xl overflow-hidden border-slate-200 flex flex-col justify-between group shadow-sm">
+                        <div>
+                            <!-- Card Top Hero Image -->
+                            <div class="h-44 w-full overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Countries Explored" 
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                            </div>
+
+                            <!-- Card Content -->
+                            <div class="p-6">
+                                <h3 class="text-2xl font-extrabold text-slate-900 mb-1 group-hover:text-sky-600 transition-colors">
+                                    24
+                                </h3>
+                                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+                                    Countries Explored
+                                </p>
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                    I've been fortunate to travel around the world and immerse myself in different cultures.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 lg:py-28 relative bg-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="glass-card rounded-3xl p-8 sm:p-14 text-center relative overflow-hidden border-sky-200 bg-gradient-to-b from-sky-50/50 via-white to-slate-50 shadow-xl">
+                    
+                    <!-- Background Glow -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">Let's Build Together</h2>
+                    <h3 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
+                        Ready to elevate your enterprise AEM platform?
+                    </h3>
+                    
+                    <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                        Whether you need a AEM Cloud Migration audit, solution architecture for multi-tenant platforms, or hands-on tech leadership - let's discuss your roadmap.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        
+                        <a href="mailto:kyle.ohagan@yahoo.com?subject=AEM%20Architecture%20Inquiry" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white font-semibold text-base shadow-lg shadow-sky-600/20 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-envelope text-white"></i>
+                            <span>Let's Talk</span>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-200 py-12 bg-slate-50 text-slate-600 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-600 to-indigo-600 flex items-center justify-center font-bold text-sm text-white">
+                    KO
+                </div>
+                <div>
+                    <span class="font-bold text-slate-900">Kyle Ohagan</span>
+                    <span class="text-xs text-slate-500 block sm:inline sm:ml-2">Enterprise AEM Architect & Tech Lead</span>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-6 text-xs text-slate-500">
+                <span>© 2026 Kyle Ohagan. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
