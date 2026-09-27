@@ -423,22 +423,226 @@
           </div>
         </section>
             
-       <!-- Section Header -->
-<div class="mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-    <div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
-            Case Study
-        </h2>
-        <p class="text-base sm:text-lg text-slate-600 font-medium">
-            Migrating enterprise workflows from <span class="text-slate-900 font-semibold">AEM 6.5 On-Premise</span> to <span class="text-sky-600 font-semibold">AEM as a Cloud Service</span>
-        </p>
-    </div>
-    <!-- Optional: Migration Tech Tag -->
-    <div class="self-start sm:self-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-bold shadow-sm">
-        <i class="fa-solid fa-cloud-arrow-up text-sky-500"></i>
-        <span>On-Prem to Cloud Migration</span>
-    </div>
-</div>
+       <!-- Case Study Section -->
+        <section id="case-study" class="py-20 lg:py-28 relative bg-slate-50/60 border-y border-slate-200 overflow-hidden">
+            <!-- Background glow for depth -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-sky-500/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+                <!-- Section Header -->
+                <div class="mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Case Study
+                    </h2>
+                </div>
+
+                <!-- 4-Step Cards Grid with Super Large Responsive Connectors -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 relative z-10">
+
+                    <!-- Step 1: Problem -->
+                    <div class="relative group">
+                        <div class="glass-card rounded-2xl overflow-hidden border border-slate-200 flex flex-col justify-between h-full relative z-10 shadow-sm bg-white/60">
+                            <div>
+                                <!-- Card Top Hero Image -->
+                                <div class="h-32 w-full overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" 
+                                         alt="Legacy On-Premise Servers" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
+                                </div>
+
+                                <!-- Card Body -->
+                                <div class="p-5 pt-4">
+                                    <h3 class="text-lg font-bold text-slate-900 mb-3 group-hover:text-sky-600 transition-colors">
+                                        Problem & Context
+                                    </h3>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-slate-600">
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>On-Premise AEM:</strong> Operated legacy setups for portals & public sites.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>Vendor Dependencies:</strong> 3rd-party vendor managed infrastructure & upgrades.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>High Overhead:</strong> Excessive maintenance costs and slow release cycles.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Desktop Super Large Horizontal Arrow Connector -->
+                        <div class="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-sky-500/50 text-sky-600 items-center justify-center z-20 text-base shadow-xl shadow-slate-200">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+
+                        <!-- Mobile Super Large Vertical Arrow Connector -->
+                        <div class="flex lg:hidden w-full justify-center my-4 text-sky-600">
+                            <div class="w-10 h-10 rounded-full bg-white border-2 border-sky-500/50 flex items-center justify-center shadow-md animate-bounce">
+                                <i class="fa-solid fa-arrow-down text-base"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Audit & Planning -->
+                    <div class="relative group">
+                        <div class="glass-card rounded-2xl overflow-hidden border border-slate-200 flex flex-col justify-between h-full relative z-10 shadow-sm bg-white/60">
+                            <div>
+                                <!-- Card Top Hero Image -->
+                                <div class="h-32 w-full overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" 
+                                         alt="Architecture Audit and Planning" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
+                                </div>
+
+                                <!-- Card Body -->
+                                <div class="p-5 pt-4">
+                                    <h3 class="text-lg font-bold text-slate-900 mb-3 group-hover:text-sky-600 transition-colors">
+                                        Architecture Analysis
+                                    </h3>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-slate-600">
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>Deep Audits:</strong> Led reviews of legacy portal states, integration and technical debts.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>BPA Reports:</strong> Analyzed Best Practices Analyzer reports and plan remediations</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>Roadmapping:</strong> Drafted future architecture, timelines, and Jira epics/stories.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Desktop Super Large Horizontal Arrow Connector -->
+                        <div class="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-sky-500/50 text-sky-600 items-center justify-center z-20 text-base shadow-xl shadow-slate-200">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+
+                        <!-- Mobile Super Large Vertical Arrow Connector -->
+                        <div class="flex lg:hidden w-full justify-center my-4 text-sky-600">
+                            <div class="w-10 h-10 rounded-full bg-white border-2 border-sky-500/50 flex items-center justify-center shadow-md animate-bounce">
+                                <i class="fa-solid fa-arrow-down text-base"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Execution -->
+                    <div class="relative group">
+                        <div class="glass-card rounded-2xl overflow-hidden border border-slate-200 flex flex-col justify-between h-full relative z-10 shadow-sm bg-white/60">
+                            <div>
+                                <!-- Card Top Hero Image -->
+                                <div class="h-32 w-full overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
+                                         alt="Cross Team Delivery" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
+                                </div>
+
+                                <!-- Card Body -->
+                                <div class="p-5 pt-4">
+                                    <h3 class="text-lg font-bold text-slate-900 mb-3 group-hover:text-sky-600 transition-colors">
+                                        Cross-Team Delivery
+                                    </h3>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-slate-600">
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>Cloud Setup:</strong> Partnered with Identity, Security, Integration & Network teams.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>Code Refactoring:</strong> Refactored repositories for Cloud compatibility.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-500 mt-2 shrink-0"></i>
+                                            <span><strong>Stakeholder Sync:</strong> Guided dev teams and delivered weekly reporting.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Desktop Super Large Horizontal Arrow Connector -->
+                        <div class="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-sky-500/50 text-sky-600 items-center justify-center z-20 text-base shadow-xl shadow-slate-200">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+
+                        <!-- Mobile Super Large Vertical Arrow Connector -->
+                        <div class="flex lg:hidden w-full justify-center my-4 text-sky-600">
+                            <div class="w-10 h-10 rounded-full bg-white border-2 border-sky-500/50 flex items-center justify-center shadow-md animate-bounce">
+                                <i class="fa-solid fa-arrow-down text-base"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Outcome (High Visual Impact) -->
+                    <div class="relative group">
+                        <div class="rounded-2xl overflow-hidden border-2 border-sky-500/60 bg-gradient-to-br from-sky-50 via-white to-slate-50 flex flex-col justify-between h-full relative z-10 shadow-xl shadow-sky-600/10">
+                            
+                            <!-- Ambient Glow Effect -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-sky-500/5 via-transparent to-transparent pointer-events-none"></div>
+
+                            <div>
+                                <!-- Card Top Hero Image -->
+                                <div class="h-32 w-full overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" 
+                                         alt="Cloud Architecture Outcome" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
+
+                                    <!-- Prominent Outcome Badge with Trophy Icon -->
+                                    <div class="absolute top-3 left-3 px-3 py-1.5 rounded-lg bg-sky-600 text-white font-extrabold text-xs flex items-center gap-1.5 shadow-lg border border-sky-400/40 backdrop-blur-md">
+                                        <i class="fa-solid fa-trophy text-[11px] animate-pulse"></i>
+                                        <span>RESULT</span>
+                                    </div>
+                                </div>
+
+                                <!-- Card Body with bullet points -->
+                                <div class="p-5 pt-4 relative z-10">
+                                    <h3 class="text-xl font-extrabold text-slate-900 mb-3 group-hover:text-sky-600 transition-colors flex items-center gap-2">
+                                        Outcome
+                                    </h3>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-slate-700 font-medium">
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-600 mt-2 shrink-0"></i>
+                                            <span><strong>Strict Deadline:</strong> Completed migration in a <span class="text-sky-700 font-bold bg-sky-100 px-1 rounded">4-month window</span>.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-600 mt-2 shrink-0"></i>
+                                            <span><strong>Scale:</strong> Successfully deployed across <span class="text-sky-700 font-bold bg-sky-100 px-1 rounded">5 AEM Cloud environments</span>.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-circle text-[6px] text-sky-600 mt-2 shrink-0"></i>
+                                            <span><strong>Value:</strong> Cut operational costs and enabled monthly releases.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Bottom highlighted footer callout -->
+                            <div class="px-5 pb-5 pt-0 relative z-10">
+                                <div class="pt-3 border-t border-sky-500/30 flex items-center justify-between text-xs text-sky-700 font-bold tracking-wider">
+                                    <span class="flex items-center gap-1.5">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                                        SUCCESSFULLY DELIVERED
+                                    </span>
+                                    <i class="fa-solid fa-circle-check text-sky-600 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
         
         
         <!-- Featured Projects Section -->
